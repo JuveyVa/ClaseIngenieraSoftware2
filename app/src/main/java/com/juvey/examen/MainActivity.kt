@@ -14,6 +14,8 @@ import com.juvey.examen.act1.SumView
 import com.juvey.examen.act1.SumViewModel
 import com.juvey.examen.act3.GameView
 import com.juvey.examen.act3.GameViewModel
+import com.juvey.examen.act4.ImcView
+import com.juvey.examen.act4.ImcViewModel
 import com.juvey.examen.ui.theme.ExamenTheme
 
 class MainActivity : ComponentActivity() {
@@ -26,7 +28,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    GameView(GameViewModel())
+                    ImcView(ImcViewModel())
                 }
             }
         }
