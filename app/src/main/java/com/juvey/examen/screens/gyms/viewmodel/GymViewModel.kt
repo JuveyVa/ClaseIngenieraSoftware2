@@ -16,6 +16,7 @@ import kotlin.math.log
 class GymViewModel: ViewModel() {
     private val ApiGymService = RetrofitInstance.api
     val gyms = MutableStateFlow<List<Gym>>(emptyList())
+
     fun getGyms() {
         viewModelScope.launch {
             try {
