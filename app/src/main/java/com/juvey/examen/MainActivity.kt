@@ -18,6 +18,8 @@ import com.juvey.examen.act4.ImcView
 import com.juvey.examen.act4.ImcViewModel
 import com.juvey.examen.examen3er.ExamenView
 import com.juvey.examen.examen3er.ExamenViewModel
+import com.juvey.examen.screensexam.viewmodel.RestViewModel
+import com.juvey.examen.screensexam.views.RestView
 import com.juvey.examen.ui.theme.ExamenTheme
 
 class MainActivity : ComponentActivity() {
@@ -30,7 +32,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ExamenView(ExamenViewModel())
+                    RestView(RestViewModel())
                 }
             }
         }
