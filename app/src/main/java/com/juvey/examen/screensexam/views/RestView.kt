@@ -1,6 +1,7 @@
 package com.juvey.examen.screensexam.views
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -23,11 +24,38 @@ import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.juvey.examen.screensexam.models.Rest
 import com.juvey.examen.screensexam.viewmodel.RestViewModel
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 
 @Composable
-fun RestView(viewModel: RestViewModel) {
+fun MyApp() {
+    val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = "rests") {
+        composable("rests") {
+            RestView(RestViewModel(), navController)
+        }
+        composable("detail/{rest}", arguments = listOf(navArgument("rest") { type = NavType.StringType})) { backStackEntry ->
+            val restaurantJson = backStackEntry.arguments?.getString("rest")
+            val restaurant = Json.decodeFromString<Rest>(restaurantJson!!)
+            RestViewDetail(restaurant, navController)
+        }
+    }
+}
+
+
+@Composable
+fun RestView(viewModel: RestViewModel, navController: NavController) {
     val rests by viewModel.rests.collectAsState()
+
+
     LazyColumn(modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(16.dp)) {
         items(rests) {
@@ -57,7 +85,8 @@ fun RestView(viewModel: RestViewModel) {
                 tint = Color.Magenta
             )
         }
-            Column(modifier = Modifier.padding(16.dp)) {
+            Column(modifier = Modifier.padding(16.dp).clickable{
+                navController.navigate("detail/$rest")}) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth()
