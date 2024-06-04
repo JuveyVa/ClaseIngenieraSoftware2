@@ -1,11 +1,14 @@
 package com.juvey.examen.screensexam.viewmodel
 
 import android.util.Log
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.juvey.examen.screensexam.models.Rest
 import com.juvey.examen.screensexam.network.RetrofitInstance2
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 class RestViewModel: ViewModel() {
@@ -16,7 +19,7 @@ class RestViewModel: ViewModel() {
         viewModelScope.launch {
             try {
                 val response = ApiRestService.getRest()
-                Log.d("RestViewModel", "Rests: $response")
+                Log.d("RestViewModel", "rests: $response")
                 if (response.isNotEmpty()) {
                     rests.value = response
                 }
@@ -29,4 +32,5 @@ class RestViewModel: ViewModel() {
             // Handle errors here
         }
     }
+
 }

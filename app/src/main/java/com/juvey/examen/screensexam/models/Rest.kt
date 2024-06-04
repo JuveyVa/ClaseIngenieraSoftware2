@@ -9,7 +9,7 @@ data class Rest (
     val delivery: String,
     val isFavorite: Boolean,
     val fee: String,
-    val website: String,
+    val webSite: String,
     val latitude: String,
     val longitude: String
 )

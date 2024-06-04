@@ -1,5 +1,6 @@
 package com.juvey.examen.screensexam.views
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -22,8 +23,10 @@ import coil.compose.AsyncImage
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -33,60 +36,74 @@ import androidx.navigation.navArgument
 import com.juvey.examen.screensexam.models.Rest
 import com.juvey.examen.screensexam.viewmodel.RestViewModel
 import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
+@SuppressLint("StateFlowValueCalledInComposition")
 @Composable
 fun MyApp() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "rests") {
-        composable("rests") {
-            RestView(RestViewModel(), navController)
+    val viewModel: RestViewModel = viewModel() // Obtener ViewModel
+
+    NavHost(navController = navController, startDestination = "restView") {
+        composable("restView") {
+            RestView(viewModel, navController)
         }
-        composable("detail/{rest}", arguments = listOf(navArgument("rest") { type = NavType.StringType})) { backStackEntry ->
-            val restaurantJson = backStackEntry.arguments?.getString("rest")
-            val restaurant = Json.decodeFromString<Rest>(restaurantJson!!)
-            RestViewDetail(restaurant, navController)
+        composable("restViewDetail/{restName}") { backStackEntry ->
+            val restName = backStackEntry.arguments?.getString("restName")
+            val rest = viewModel.rests.value.find { it.name.equals(restName, ignoreCase = true) }
+            if (rest != null) {
+                RestViewDetail(rest, viewModel, navController)
+            } else {
+                Text("Restaurante no encontrado")
+            }
         }
     }
 }
-
 
 @Composable
 fun RestView(viewModel: RestViewModel, navController: NavController) {
     val rests by viewModel.rests.collectAsState()
 
-
-    LazyColumn(modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.spacedBy(16.dp)) {
-        items(rests) {
-                rest ->
-        Box(modifier = Modifier.fillMaxSize()){
-            AsyncImage(
-                model = rest.imgName,
-                contentDescription = "No jala",   modifier = Modifier
-                    .fillMaxWidth()
-                    .aspectRatio(16 / 9f)
-                    .clip(RoundedCornerShape(8.dp)),
-                contentScale = ContentScale.Crop
-            )
-            val icon = if (rest.isFavorite) {
-                Icons.Default.Favorite
-            }else {
-                Icons.Default.FavoriteBorder
-            }
-
-            Icon(
-                imageVector = icon,
-                contentDescription = "Favorite",
+    LazyColumn(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        items(rests) { rest ->
+            Column(
                 modifier = Modifier
-                    .align(Alignment.TopEnd)
-                    .padding(8.dp)
-                    .size(24.dp),
-                tint = Color.Magenta
-            )
-        }
-            Column(modifier = Modifier.padding(16.dp).clickable{
-                navController.navigate("detail/$rest")}) {
+                    .padding(16.dp)
+                    .clickable {
+                        // Navegar a RestViewDetail cuando se hace clic en un restaurante
+                        navController.navigate("restViewDetail/${rest.name}")
+                    }
+            ) {
+                Box(modifier = Modifier.fillMaxSize()) {
+                    AsyncImage(
+                        model = rest.imgName,
+                        contentDescription = "No jala",
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .aspectRatio(16 / 9f)
+                            .clip(RoundedCornerShape(8.dp)),
+                        contentScale = ContentScale.Crop
+                    )
+                    val icon = if (rest.isFavorite) {
+                        Icons.Default.Favorite
+                    } else {
+                        Icons.Default.FavoriteBorder
+                    }
+
+                    Icon(
+                        imageVector = icon,
+                        contentDescription = "Favorite",
+                        modifier = Modifier
+                            .align(Alignment.TopEnd)
+                            .padding(8.dp)
+                            .size(24.dp),
+                        tint = Color.Magenta
+                    )
+                }
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth()
@@ -114,7 +131,6 @@ fun RestView(viewModel: RestViewModel, navController: NavController) {
                 Text(text = "\uD83D\uDCB3 MX $ ${rest.fee} Delivery Fee: 35 - 45 min")
                 Spacer(modifier = Modifier.height(16.dp))
             }
-
         }
     }
     DisposableEffect(Unit) {
