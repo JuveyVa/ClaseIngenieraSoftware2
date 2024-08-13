@@ -18,6 +18,7 @@ import com.juvey.examen.act4.ImcView
 import com.juvey.examen.act4.ImcViewModel
 import com.juvey.examen.examen3er.ExamenView
 import com.juvey.examen.examen3er.ExamenViewModel
+import com.juvey.examen.mainmenu.MainMenu
 import com.juvey.examen.screensexam.viewmodel.RestViewModel
 import com.juvey.examen.screensexam.views.MyApp
 import com.juvey.examen.screensexam.views.RestView
@@ -33,7 +34,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MyApp()
+                    MainMenu()
                 }
             }
         }

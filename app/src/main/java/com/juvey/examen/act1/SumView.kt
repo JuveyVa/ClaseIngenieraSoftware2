@@ -17,7 +17,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-
 fun SumView(viewModel: SumViewModel){
     var number1 by remember { mutableStateOf("") }
     var number2 by remember { mutableStateOf("") }
