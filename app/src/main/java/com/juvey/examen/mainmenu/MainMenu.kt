@@ -15,7 +15,7 @@ fun MainMenu() {
 
     Column(modifier = androidx.compose.ui.Modifier.padding(40.dp),
         horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally) {
-        Text(text = "Main Menu", fontSize = 20.sp, modifier = androidx.compose.ui.Modifier.padding(20.dp),
+        Text(text = "Main Menu", fontSize = 40.sp, modifier = androidx.compose.ui.Modifier.padding(20.dp),
             color = androidx.compose.ui.graphics.Color.Black)
         Button(onClick = {  }) {
             Text(text = "SumaView")
