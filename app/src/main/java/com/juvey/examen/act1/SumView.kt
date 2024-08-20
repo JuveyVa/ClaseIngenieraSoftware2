@@ -15,9 +15,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 
 @Composable
-fun SumView(viewModel: SumViewModel){
+fun SumView(viewModel: SumViewModel, navController: NavController){
     var number1 by remember { mutableStateOf("") }
     var number2 by remember { mutableStateOf("") }
     var number3 by remember { mutableStateOf("") }
@@ -37,11 +38,5 @@ fun SumView(viewModel: SumViewModel){
         }
         Text(text = "El reultado es: ${resultSumByViewModel}")
     }
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun ScreenPreview() {
-    SumView(SumViewModel())
+    
 }

@@ -20,10 +20,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.juvey.examen.R
 
 @Composable
-fun GameView(viewModel: GameViewModel){
+fun GameView(viewModel: GameViewModel, navController: NavController){
     val resultRandomNumberByViewModel by viewModel.getResult().observeAsState(-1)
     val RandomImage = when(resultRandomNumberByViewModel){
         0 -> R.drawable.roca
@@ -47,8 +48,3 @@ fun GameView(viewModel: GameViewModel){
 
 
 
-@Preview
-@Composable
-fun GamePreview() {
-    GameView(GameViewModel())
-}

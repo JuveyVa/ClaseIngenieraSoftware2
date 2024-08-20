@@ -11,13 +11,14 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 
 import coil.compose.rememberImagePainter
 
 
 @Composable
-fun GymView(viewModel: GymViewModel) {
+fun GymView(viewModel: GymViewModel, navController: NavController) {
     val gyms by viewModel.gyms.collectAsState()
 
 

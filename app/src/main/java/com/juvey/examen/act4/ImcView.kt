@@ -18,12 +18,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.navigation.NavController
 import com.juvey.examen.R
 import com.juvey.examen.act1.SumView
 import com.juvey.examen.act1.SumViewModel
 
 @Composable
-fun ImcView(viewModel: ImcViewModel) {
+fun ImcView(viewModel: ImcViewModel, navController: NavController) {
     var height by remember { mutableStateOf("") }
     var weight by remember { mutableStateOf("") }
 
@@ -53,16 +54,5 @@ fun ImcView(viewModel: ImcViewModel) {
 
 
 
-
-
-
-
-
-
-@Preview(showBackground = true)
-@Composable
-fun ScreenPreview() {
-    ImcView(ImcViewModel())
-}
 
 
