@@ -10,4 +10,6 @@ object Routes {
     var ExamenView = "ExamenView"
     var GymView = "GymView"
     var RestView = "RestView"
+    var secondPartialView = "SecondPartialView"
+    var thirdPartialView = "ThirdPartialView"
 }

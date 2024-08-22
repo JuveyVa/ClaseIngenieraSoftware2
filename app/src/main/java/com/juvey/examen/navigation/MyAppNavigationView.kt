@@ -30,6 +30,12 @@ fun MyAppNavigationView() {
         composable(Routes.firstPartialView) {
             FirstPartialView(navController)
         }
+        composable(Routes.secondPartialView) {
+            SecondPartialView(navController)
+        }
+        composable(Routes.thirdPartialView) {
+            ThirdPartialView(navController)
+        }
         composable(Routes.TimeFireView) {
             TimeFireView(viewModel = TimeFireViewModel(), navController)
         }

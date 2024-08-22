@@ -1,5 +1,6 @@
 package com.juvey.examen.navigation
 
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -19,14 +20,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import com.juvey.examen.R
+
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun FirstPartialView(navController: NavController) {
+fun ThirdPartialView(navController : NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Primer Parcial", color = Color.White) },
+                title = { Text("Tercer Parcial", color = Color.White) },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = Color.Black,
                 )
@@ -35,56 +37,19 @@ fun FirstPartialView(navController: NavController) {
         content = { innerPadding ->
             Column(
                 modifier = Modifier
-                    .padding(innerPadding)
                     .fillMaxSize()
+                    .padding(innerPadding)
             ) {
                 Text(text = stringResource(id = R.string.app_name))
+                Text(text = "First View")
                 Button(onClick = {
-                    navController.navigate(Routes.TimeFireView)
                 }) {
-                    Text(text = "Go to TimeFireView")
-                }
-                Button(onClick = {
-                    navController.navigate(Routes.SumView)
-                }) {
-                    Text(text = "Go to SumView")
-                }
-                Button(onClick = {
-                    navController.navigate(Routes.SoccerView)
-                }) {
-                    Text(text = "Go to SoccerView")
-                }
-                Button(onClick = {
-                    navController.navigate(Routes.GameView)
-                }) {
-                    Text(text = "Go to GameView")
-                }
-                Button(onClick = {
-                    navController.navigate(Routes.ImcView)
-                }) {
-                    Text(text = "Go to ImcView")
-                }
-                Button(onClick = {
-                    navController.navigate(Routes.ExamenView)
-                }) {
-                    Text(text = "Go to ExamenView")
-                }
-                Button(onClick = {
-                    navController.navigate(Routes.GymView)
-                }) {
-                    Text(text = "Go to GymView")
-                }
-                Button(onClick = {
-                    navController.navigate(Routes.RestView)
-                }) {
-                    Text(text = "Go to RestView")
+                    Text(text = "Go to Second View")
                 }
             }
         },
         bottomBar = {
             BottomNavBarView(navController = navController)
-    }
-    )
         }
-
-
+    )
+}
