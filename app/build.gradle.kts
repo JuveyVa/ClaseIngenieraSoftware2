@@ -78,4 +78,7 @@ dependencies {
     implementation("com.google.accompanist:accompanist-permissions:0.28.0")
     val nav_version = "2.7.7"
     implementation("androidx.navigation:navigation-compose:$nav_version")
+    implementation("androidx.compose.material:material-icons-extended:1.6.8")
+    implementation("androidx.media:media:1.6.0")
+
 }

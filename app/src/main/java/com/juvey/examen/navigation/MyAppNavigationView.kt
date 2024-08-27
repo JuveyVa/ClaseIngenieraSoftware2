@@ -14,9 +14,8 @@ import com.juvey.examen.act4.ImcView
 import com.juvey.examen.act4.ImcViewModel
 import com.juvey.examen.examen3er.ExamenView
 import com.juvey.examen.examen3er.ExamenViewModel
-import com.juvey.examen.juego.TimeFireView
-import com.juvey.examen.juego.TimeFireViewModel
-import com.juvey.examen.navigation.Routes.TimeFireView
+import com.juvey.examen.game.TimeFireView
+import com.juvey.examen.game.TimeFireViewModel
 import com.juvey.examen.screens.gyms.viewmodel.GymViewModel
 import com.juvey.examen.screens.gyms.views.GymView
 import com.juvey.examen.screensexam.viewmodel.RestViewModel
