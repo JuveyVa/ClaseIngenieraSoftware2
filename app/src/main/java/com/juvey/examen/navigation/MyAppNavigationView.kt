@@ -12,6 +12,7 @@ import com.juvey.examen.act3.GameView
 import com.juvey.examen.act3.GameViewModel
 import com.juvey.examen.act4.ImcView
 import com.juvey.examen.act4.ImcViewModel
+import com.juvey.examen.animation.LottieAnimationView
 import com.juvey.examen.examen3er.ExamenView
 import com.juvey.examen.examen3er.ExamenViewModel
 import com.juvey.examen.game.TimeFireView
@@ -20,6 +21,7 @@ import com.juvey.examen.screens.gyms.viewmodel.GymViewModel
 import com.juvey.examen.screens.gyms.views.GymView
 import com.juvey.examen.screensexam.viewmodel.RestViewModel
 import com.juvey.examen.screensexam.views.RestView
+import com.juvey.examen.spotify.SpotifyView
 
 @Composable
 fun MyAppNavigationView() {
@@ -58,6 +60,12 @@ fun MyAppNavigationView() {
         }
         composable(Routes.RestView) {
             RestView(viewModel = RestViewModel(), navController)
+        }
+        composable(Routes.LottieAnimationView) {
+            LottieAnimationView(navController)
+        }
+        composable(Routes.spotifyview) {
+            SpotifyView(navController)
         }
     })
 }
