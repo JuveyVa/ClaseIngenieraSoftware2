@@ -79,6 +79,16 @@ fun FirstPartialView(navController: NavController) {
                 }) {
                     Text(text = "Go to RestView")
                 }
+                Button(onClick = {
+                    navController.navigate(Routes.LottieAnimationView)
+                }) {
+                    Text(text = "Go to LottieAnimationView")
+                }
+                Button(onClick = {
+                    navController.navigate(Routes.spotifyview)
+                }) {
+                    Text(text = "Go to SpotifyView")
+                }
             }
         },
         bottomBar = {
