@@ -89,6 +89,11 @@ fun FirstPartialView(navController: NavController) {
                 }) {
                     Text(text = stringResource(id = R.string.spotify_title))
                 }
+                Button(onClick = {
+                    navController.navigate(Routes.appleview)
+                }) {
+                    Text(text = stringResource(id = R.string.apple_view_title))
+                }
             }
         },
         bottomBar = {

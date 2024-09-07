@@ -16,4 +16,5 @@ object Routes {
     var thirdPartialView = "ThirdPartialView"
     var LottieAnimationView = "LottieAnimationView"
     var spotifyview = "SpotifyView"
+    var appleview = "AppleView"
 }
