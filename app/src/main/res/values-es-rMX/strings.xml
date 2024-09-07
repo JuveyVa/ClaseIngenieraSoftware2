@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name = "app_name">Examen</string>
+    <string name="first_partial_title">Primer Parcial</string>
+    <string name="time_fire_title">Ir a TiempoFuegoJuego</string>
+    <string name="sum_title">Ir a CalculadoraSuma</string>
+    <string name="soccer_title">Ir a MarcadorFutbol</string>
+    <string name="game_title">Ir a PiedraPapelTijera</string>
+    <string name="imc_title">Ir a CalculadorImc</string>
+    <string name="examen_title">Ir a CalculadorDeAgua</string>
+    <string name="gym_title">Ir a AplicacionGimnasio</string>
+    <string name="rest_title">Ir a AplicacionRestaurante</string>
+    <string name="lottie_title">Ir a AnimacionLottie</string>
+    <string name="spotify_title">Ir a Spotify</string>
+    <string name="nav_first_title">Primero</string>
+    <string name="nsv_second_title">Segundo</string>
+    <string name="nav_third_title">Tercero</string>
+</resources>

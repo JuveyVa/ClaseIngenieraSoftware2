@@ -41,18 +41,18 @@ fun SpotifyView(navController: NavController) {
                         .weight(1f)
                         .fillMaxWidth(), colors = ButtonDefaults.buttonColors(
                         containerColor = Color.Gray), shape = RectangleShape) {
-                 Text(text = "LOG IN", color = Color.White, fontWeight = androidx.compose.ui.text.font.FontWeight.Bold)
+                    Text(text = "LOG IN", color = Color.White, fontWeight = androidx.compose.ui.text.font.FontWeight.Bold)
                 }
                 Button(onClick = { /*TODO*/ },
                     Modifier
                         .weight(1f)
                         .fillMaxWidth(), colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.Green), shape = RectangleShape) {
+                        containerColor = Color.Green), shape = RectangleShape) {
                     Text(text = "SIGN UP", color = Color.White, fontWeight = androidx.compose.ui.text.font.FontWeight.Bold)
                 }
-
             }
             Spacer(modifier = Modifier.size(30.dp))
         }
     }
 }
+
