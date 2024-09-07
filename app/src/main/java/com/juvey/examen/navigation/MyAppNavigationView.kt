@@ -13,6 +13,8 @@ import com.juvey.examen.act3.GameViewModel
 import com.juvey.examen.act4.ImcView
 import com.juvey.examen.act4.ImcViewModel
 import com.juvey.examen.animation.LottieAnimationView
+import com.juvey.examen.appleapp.AppleAppView
+import com.juvey.examen.appleapp.AppleAppViewModel
 import com.juvey.examen.examen3er.ExamenView
 import com.juvey.examen.examen3er.ExamenViewModel
 import com.juvey.examen.game.TimeFireView
@@ -66,6 +68,9 @@ fun MyAppNavigationView() {
         }
         composable(Routes.spotifyview) {
             SpotifyView(navController)
+        }
+        composable(Routes.appleview) {
+            AppleAppView(viewModel = AppleAppViewModel(), navController)
         }
     })
 }

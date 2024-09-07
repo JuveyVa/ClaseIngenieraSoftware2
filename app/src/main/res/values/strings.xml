@@ -14,4 +14,5 @@
     <string name="nav_first_title">First</string>
     <string name="nsv_second_title">Second</string>
     <string name="nav_third_title">Third</string>
+    <string name="apple_view_title">Go to AppleView</string>
 </resources>

@@ -19,16 +19,21 @@ class AppleAppViewModel : ViewModel() {
 
 
     fun getTotal(): MutableLiveData<Int> = actualProductionTotal
+    fun getTotalProduction(): MutableLiveData<Int> = totalProduction
 
-    fun totales(total: varTotal){
-        val total: Int = total.total + (actualProductionTotal.value ?: 0)
-        actualProductionTotal.postValue(total)
+    fun totales(total: varTotal) {
+        val sum = total.total + (actualProductionTotal.value ?: 0)
+        actualProductionTotal.postValue(sum)
     }
 
     fun calculateActualProduction(ap: Int): Int {
         val totalpa = ap * 80
         actualProduction.postValue(totalpa)
         return totalpa
+    }
+
+    fun storeTotalProduction(pt: Int) {
+        totalProduction.postValue(pt)
     }
 
 
@@ -38,12 +43,9 @@ class AppleAppViewModel : ViewModel() {
         return totalp
     }
 
-    fun updateTotalProduction(pt: Int) {
-        totalProduction.value = calculateTotalProduction(pt)
-    }
-
-    fun getTotalProductionValue(): Int {
-        return totalProduction.value ?: 0
+    fun calculatePercentage(actual: Int, total: Int): Int {
+        if (total == 0) return 0
+        return (actual * 100) / total
     }
 
 

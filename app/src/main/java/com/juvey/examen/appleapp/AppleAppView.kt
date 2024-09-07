@@ -30,14 +30,16 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.juvey.examen.R
 import com.juvey.examen.examen3er.varTotal
 
 @Composable
-fun AppleAppView(viewModel: AppleAppViewModel) {
+fun AppleAppView(viewModel: AppleAppViewModel, navController: NavController) {
     var percent by remember { mutableStateOf("0") }
     var pt by remember { mutableStateOf("0") }
     var pa by remember { mutableStateOf("0") }
+    val totalProduction by viewModel.getTotalProduction().observeAsState(0)
     val totalpa by viewModel.getTotal().observeAsState(0)
     val context = LocalContext.current
     var backgroundColor by remember { mutableStateOf(Color.White) }
@@ -75,14 +77,13 @@ fun AppleAppView(viewModel: AppleAppViewModel) {
                         .size(50.dp)
                         .clickable {
                             val ptValue = pt.toIntOrNull() ?: 0
-                            val totalProduction = viewModel.calculateTotalProduction(ptValue)
-                            Toast
-                                .makeText(
-                                    context,
-                                    "La producción total es ${totalProduction} manzanas",
-                                    Toast.LENGTH_SHORT
-                                )
-                                .show()
+                            viewModel.storeTotalProduction(ptValue)
+                            val totalProductionMultiplied = ptValue * 80
+                            Toast.makeText(
+                                context,
+                                "La producción total es $totalProductionMultiplied manzanas",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                 )
             }
@@ -92,32 +93,28 @@ fun AppleAppView(viewModel: AppleAppViewModel) {
                     .padding(end = 16.dp)
                     .padding(start = 16.dp))
                 TextField(
-                    value = pa,
-                    onValueChange = {viewModel.getTotal().value = pa.toInt()
-                    },
-                    modifier = Modifier
-                        .size(150.dp, 50.dp)
-                        .padding(end = 16.dp),
+                    value = totalpa.toString(), // Muestra el valor actualizado
+                    onValueChange = { },
+                    modifier = Modifier.size(150.dp, 50.dp).padding(end = 16.dp),
                     colors = TextFieldDefaults.colors(
                         unfocusedContainerColor = Color.Transparent,
                         focusedContainerColor = Color.Transparent,
                     ),
+                    enabled = false,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
                 )
                 Image(
                     painter = painterResource(id = R.drawable.apple),
-                    contentDescription = "No jala",
+                    contentDescription = "Calcular producción actual",
                     modifier = Modifier
                         .size(50.dp)
                         .clickable {
-
-                            Toast
-                                .makeText(
-                                    context,
-                                    "La producción actual es manzanas",
-                                    Toast.LENGTH_SHORT
-                                )
-                                .show()
+                            val productionValue = viewModel.calculateActualProduction(totalpa)
+                            Toast.makeText(
+                                context,
+                                "La producción actual es ${productionValue} manzanas",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                 )
             }
@@ -155,8 +152,14 @@ fun AppleAppView(viewModel: AppleAppViewModel) {
             }
             Spacer(modifier = Modifier.size(30.dp))
             Button(onClick = {
-
-
+                val calculatedPercent = viewModel.calculatePercentage(totalpa, totalProduction)
+                percent = calculatedPercent.toString()
+                backgroundColor = if (calculatedPercent > 70) Color.Red else Color.White
+                Toast.makeText(
+                    context,
+                    "El porcentaje es ${calculatedPercent}%",
+                    Toast.LENGTH_SHORT
+                ).show()
             }, shape = RectangleShape) {
                 Text(text = "Calcular")
             }
