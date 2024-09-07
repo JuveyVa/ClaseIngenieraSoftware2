@@ -26,7 +26,7 @@ fun FirstPartialView(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Primer Parcial", color = Color.White) },
+                title = { Text(text = stringResource(id = R.string.first_partial_title), color = Color.White) },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = Color.Black,
                 )
@@ -42,52 +42,52 @@ fun FirstPartialView(navController: NavController) {
                 Button(onClick = {
                     navController.navigate(Routes.TimeFireView)
                 }) {
-                    Text(text = "Go to TimeFireView")
+                    Text(text = stringResource(id = R.string.time_fire_title))
                 }
                 Button(onClick = {
                     navController.navigate(Routes.SumView)
                 }) {
-                    Text(text = "Go to SumView")
+                    Text(text = stringResource(id = R.string.sum_title))
                 }
                 Button(onClick = {
                     navController.navigate(Routes.SoccerView)
                 }) {
-                    Text(text = "Go to SoccerView")
+                    Text(text = stringResource(id = R.string.soccer_title))
                 }
                 Button(onClick = {
                     navController.navigate(Routes.GameView)
                 }) {
-                    Text(text = "Go to GameView")
+                    Text(text = stringResource(id = R.string.game_title))
                 }
                 Button(onClick = {
                     navController.navigate(Routes.ImcView)
                 }) {
-                    Text(text = "Go to ImcView")
+                    Text(text = stringResource(id = R.string.imc_title))
                 }
                 Button(onClick = {
                     navController.navigate(Routes.ExamenView)
                 }) {
-                    Text(text = "Go to ExamenView")
+                    Text(text = stringResource(id = R.string.examen_title))
                 }
                 Button(onClick = {
                     navController.navigate(Routes.GymView)
                 }) {
-                    Text(text = "Go to GymView")
+                    Text(text = stringResource(id = R.string.gym_title))
                 }
                 Button(onClick = {
                     navController.navigate(Routes.RestView)
                 }) {
-                    Text(text = "Go to RestView")
+                    Text(text = stringResource(id = R.string.rest_title))
                 }
                 Button(onClick = {
                     navController.navigate(Routes.LottieAnimationView)
                 }) {
-                    Text(text = "Go to LottieAnimationView")
+                    Text(text = stringResource(id = R.string.lottie_title))
                 }
                 Button(onClick = {
                     navController.navigate(Routes.spotifyview)
                 }) {
-                    Text(text = "Go to SpotifyView")
+                    Text(text = stringResource(id = R.string.spotify_title))
                 }
             }
         },

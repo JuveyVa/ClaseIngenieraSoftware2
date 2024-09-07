@@ -16,6 +16,8 @@ import com.juvey.examen.act3.GameView
 import com.juvey.examen.act3.GameViewModel
 import com.juvey.examen.act4.ImcView
 import com.juvey.examen.act4.ImcViewModel
+import com.juvey.examen.appleapp.AppleAppView
+import com.juvey.examen.appleapp.AppleAppViewModel
 import com.juvey.examen.examen3er.ExamenView
 import com.juvey.examen.examen3er.ExamenViewModel
 import com.juvey.examen.mainmenu.MainMenu
@@ -35,7 +37,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MyAppNavigationView()
+                    AppleAppView(viewModel = AppleAppViewModel())
                 }
             }
         }

@@ -7,21 +7,29 @@ import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Chair
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.WarningAmber
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
+import com.juvey.examen.R
 
-val NavBarItems = listOf(
-    BarItem(
-        title = "Primer",
-        image = Icons.Filled.Chair,
-        route = Routes.firstPartialView
-    ),
-    BarItem(
-        title = "Segundo",
-        image = Icons.Filled.WarningAmber,
-        route = Routes.secondPartialView
-    ),
-    BarItem(
-        title = "Tercero",
-        image = Icons.Filled.Face,
-        route = Routes.thirdPartialView
-    ),
-)
+@Composable
+fun NavBarItems() {
+    val context = LocalContext.current
+    val navItems = listOf(
+        BarItem(
+            title = context.getString(R.string.nav_first_title),
+            image = Icons.Filled.Chair,
+            route = Routes.firstPartialView
+        ),
+        BarItem(
+            title = context.getString(R.string.nsv_second_title),
+            image = Icons.Filled.WarningAmber,
+            route = Routes.secondPartialView
+        ),
+        BarItem(
+            title = context.getString(R.string.nav_third_title),
+            image = Icons.Filled.Face,
+            route = Routes.thirdPartialView
+        ),
+    )
+}
