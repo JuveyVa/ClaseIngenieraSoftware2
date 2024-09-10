@@ -17,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
@@ -37,7 +38,7 @@ import com.juvey.examen.examen3er.varTotal
 @Composable
 fun AppleAppView(viewModel: AppleAppViewModel, navController: NavController) {
     var percent by remember { mutableStateOf("0") }
-    var pt by remember { mutableStateOf("0") }
+    var pt by remember { mutableStateOf("200") }
     var pa by remember { mutableStateOf("0") }
     val totalProduction by viewModel.getTotalProduction().observeAsState(0)
     val totalpa by viewModel.getTotal().observeAsState(0)
@@ -60,7 +61,10 @@ fun AppleAppView(viewModel: AppleAppViewModel, navController: NavController) {
                     .padding(start = 16.dp))
                 TextField(
                     value = pt,
-                    onValueChange = { pt = it },
+                    onValueChange = { newValue ->
+                        pt = newValue
+                        val ptValue = pt.toIntOrNull() ?: 0
+                        viewModel.storeTotalProduction(ptValue) },
                     modifier = Modifier
                         .size(150.dp, 50.dp)
                         .padding(end = 16.dp),
@@ -93,7 +97,7 @@ fun AppleAppView(viewModel: AppleAppViewModel, navController: NavController) {
                     .padding(end = 16.dp)
                     .padding(start = 16.dp))
                 TextField(
-                    value = totalpa.toString(), // Muestra el valor actualizado
+                    value = totalpa.toString(),
                     onValueChange = { },
                     modifier = Modifier.size(150.dp, 50.dp).padding(end = 16.dp),
                     colors = TextFieldDefaults.colors(
