@@ -16,4 +16,5 @@
     <string name="nsv_second_title">Segundo</string>
     <string name="nav_third_title">Tercero</string>
     <string name="apple_view_title">Ir a AplicacionManzana</string>
+    <string name="card_view_title">Ir a JuegoCarta</string>
 </resources>

@@ -40,10 +40,10 @@ fun SecondPartialView(navController : NavController) {
                     .padding(innerPadding)
             ) {
                 Text(text = stringResource(id = R.string.app_name))
-                Text(text = "First View")
                 Button(onClick = {
+                    navController.navigate(Routes.cardview)
                 }) {
-                    Text(text = "Go to Second View")
+                    Text(text = stringResource(id = R.string.card_view_title))
                 }
             }
         },
