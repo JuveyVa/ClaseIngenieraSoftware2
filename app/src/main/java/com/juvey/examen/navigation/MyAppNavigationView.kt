@@ -19,6 +19,8 @@ import com.juvey.examen.examen3er.ExamenView
 import com.juvey.examen.examen3er.ExamenViewModel
 import com.juvey.examen.game.TimeFireView
 import com.juvey.examen.game.TimeFireViewModel
+import com.juvey.examen.randomcards.CardView
+import com.juvey.examen.randomcards.CardViewModel
 import com.juvey.examen.screens.gyms.viewmodel.GymViewModel
 import com.juvey.examen.screens.gyms.views.GymView
 import com.juvey.examen.screensexam.viewmodel.RestViewModel
@@ -71,6 +73,9 @@ fun MyAppNavigationView() {
         }
         composable(Routes.appleview) {
             AppleAppView(viewModel = AppleAppViewModel(), navController)
+        }
+        composable(Routes.cardview) {
+            CardView(viewModel = CardViewModel(), navController)
         }
     })
 }

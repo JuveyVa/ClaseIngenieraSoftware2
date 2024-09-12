@@ -17,4 +17,5 @@ object Routes {
     var LottieAnimationView = "LottieAnimationView"
     var spotifyview = "SpotifyView"
     var appleview = "AppleView"
+    var cardview = "CarView"
 }
