@@ -1,6 +1,10 @@
 package com.juvey.examen.navigation
 
+import android.app.Application
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.viewinterop.AndroidView
+import androidx.datastore.migrations.SharedPreferencesView
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -25,6 +29,7 @@ import com.juvey.examen.screens.gyms.viewmodel.GymViewModel
 import com.juvey.examen.screens.gyms.views.GymView
 import com.juvey.examen.screensexam.viewmodel.RestViewModel
 import com.juvey.examen.screensexam.views.RestView
+import com.juvey.examen.sharedpreferences.SharedPreferencesView
 import com.juvey.examen.spotify.SpotifyView
 
 @Composable
@@ -33,7 +38,7 @@ fun MyAppNavigationView() {
     NavHost(navController = navController, startDestination = Routes.firstPartialView, builder =  {
 
         composable(Routes.firstPartialView) {
-            FirstPartialView(navController)
+            FirstPartialView(firstViewModel = viewModel(), navController)
         }
         composable(Routes.secondPartialView) {
             SecondPartialView(navController)
@@ -76,6 +81,9 @@ fun MyAppNavigationView() {
         }
         composable(Routes.cardview) {
             CardView(viewModel = CardViewModel(), navController)
+        }
+        composable(Routes.sharedpreferencesview) {
+            SharedPreferencesView(mainViewModel = viewModel(), navController)
         }
     })
 }

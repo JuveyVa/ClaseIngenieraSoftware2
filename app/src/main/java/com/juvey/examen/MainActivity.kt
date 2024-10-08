@@ -16,6 +16,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
 import com.juvey.examen.authview.AuthView
+import com.juvey.examen.navigation.MyAppNavigationView
+import com.juvey.examen.sharedpreferences.MainViewModel
+import com.juvey.examen.sharedpreferences.SharedPreferencesView
 import com.juvey.examen.ui.theme.ExamenTheme
 
 class MainActivity : AppCompatActivity() {
@@ -35,7 +38,8 @@ class MainActivity : AppCompatActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    AuthView(isAuthenticated, onAuthenticated = ::handleAuthenticationResult)
+                    // AuthView(isAuthenticated, onAuthenticated = ::handleAuthenticationResult)
+                    MyAppNavigationView()
                 }
             }
         }

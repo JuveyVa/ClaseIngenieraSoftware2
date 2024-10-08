@@ -18,4 +18,5 @@ object Routes {
     var spotifyview = "SpotifyView"
     var appleview = "AppleView"
     var cardview = "CarView"
+    var sharedpreferencesview = "SharedPreferencesView"
 }
