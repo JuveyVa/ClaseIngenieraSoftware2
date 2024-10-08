@@ -16,4 +16,5 @@
     <string name="nav_third_title">Third</string>
     <string name="apple_view_title">Go to AppleView</string>
     <string name="card_view_title">Go to CardView</string>
+    <string name="shared_preferences_title">Ir a SharedPreferences</string>
 </resources>

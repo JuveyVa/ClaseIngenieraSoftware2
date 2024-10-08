@@ -45,7 +45,13 @@ fun SecondPartialView(navController : NavController) {
                 }) {
                     Text(text = stringResource(id = R.string.card_view_title))
                 }
+                Button(onClick = {
+                    navController.navigate(Routes.sharedpreferencesview)
+                }) {
+                    Text(text = stringResource(id = R.string.shared_preferences_title))
+                }
             }
+
         },
         bottomBar = {
             BottomNavBarView(navController = navController)

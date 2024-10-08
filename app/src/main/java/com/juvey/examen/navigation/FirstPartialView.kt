@@ -15,18 +15,27 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.juvey.examen.R
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun FirstPartialView(navController: NavController) {
+fun FirstPartialView(firstViewModel: FirstPartialViewModel = viewModel(),navController: NavController) {
+    val name = firstViewModel.name.collectAsState()
+
+    LaunchedEffect(Unit) {
+        firstViewModel.updateName()
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = stringResource(id = R.string.first_partial_title), color = Color.White) },
+                title = { Text(text = stringResource(id = R.string.first_partial_title ) + " " + name.value, color = Color.White) },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = Color.Black,
                 )
